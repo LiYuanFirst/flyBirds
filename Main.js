@@ -8,7 +8,7 @@ export class Main {
     // context.fillRect(0,0,100,100);
     const loader = ResourceLoader.create();
     loader.onLoaded(map => this.onResourceFirstLoaded(map));
-    
+    console.log(window.innnerWidth)
     let image = wx.createImage();
     image.src = 'res/background.png';
     image.onload = ()=>{
