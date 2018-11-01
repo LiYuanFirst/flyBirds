@@ -1,7 +1,8 @@
 import {DataStore} from "./base/DataStore.js"
 export class Director {
   constructor(){
-    this.dataStore = DataStore.getInstance()
+    this.dataStore = DataStore.getInstance();
+    this.moveSpeed = 2;
   }
   static getInstance() {
     if (!Director.instance) {
