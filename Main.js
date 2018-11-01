@@ -1,7 +1,8 @@
 import {ResourceLoader} from "./js/base/ResourceLoader.js"
 import {Director} from "./js/Director.js"
 import {BackGround} from "./js/runtime/BackGround.js"
-import {DataStore} from "./js/base/DataStore.js"
+import { DataStore } from "./js/base/DataStore.js"
+import {Land} from "./js/runtime/Land.js"
 export class Main {
   constructor() {
     this.canvas = wx.createCanvas();
@@ -15,6 +16,7 @@ export class Main {
    
   }
   onResourceFirstLoaded(map) {
+    console.log(map)
     this.dataStore.ctx = this.ctx;
     this.dataStore.width = this.canvas.width;
     this.dataStore.height = this.canvas.height;
@@ -24,7 +26,8 @@ export class Main {
   }
   init() {
     this.dataStore
-      .put('background', BackGround);
+      .put('background', BackGround)
+      .put('land',Land);
     Director.getInstance().run()
   }
 }
