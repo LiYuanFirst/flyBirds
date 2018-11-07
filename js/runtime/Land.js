@@ -9,7 +9,6 @@ export class Land extends Sprite{
       0, DataStore.getInstance().height - image.height,
       image.width,image.height);
     this.landX = 0;
-    console.log(DataStore.getInstance())
     this.landSpeed = Director.getInstance().moveSpeed;
   }
   draw() {

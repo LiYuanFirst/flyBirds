@@ -15,7 +15,6 @@ export class ResourceLoader {
     let loadedCount = 0;
     for (let value of this.map.values()) {
       value.onload = () => {
-        console.log(loadedCount)
         loadedCount++;
         if(loadedCount >= this.map.size){
           callback(this.map)

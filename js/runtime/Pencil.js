@@ -10,7 +10,8 @@ export class Pencil extends Sprite {
       image.height,
       DataStore.getInstance().width,0,
       image.width,image.height
-    )
+    );
+    this.top = top;
   }
   draw(){
     this.x = this.x - Director.getInstance().moveSpeed;
