@@ -5,6 +5,7 @@ import { DataStore } from "./js/base/DataStore.js"
 import {Land} from "./js/runtime/Land.js"
 import {Birds} from "./js/player/Birds.js"
 import {StartButton} from './js/player/StartButton.js'
+import {Score} from './js/player/Score.js'
 export class Main {
   constructor() {
     this.canvas = wx.createCanvas();
@@ -16,6 +17,13 @@ export class Main {
     const loader = ResourceLoader.create();
     loader.onLoaded(map => this.onResourceFirstLoaded(map));
   }
+  //创建背景音乐
+  createBGM(){
+    var bgm = wx.createInnerAudioContext();
+    bgm.autoplay = true;
+    bgm.loop = true;
+    bgm.src = 'audio/bgm.mp3';
+  }
   onResourceFirstLoaded(map) {
     this.dataStore.ctx = this.ctx;
     this.dataStore.width = this.canvas.width;
@@ -26,11 +34,13 @@ export class Main {
   }
   init() {
     this.director.isGameOver = false;
+    this.createBGM();
     this.dataStore
       .put('pencils',[])
       .put('background', BackGround)
       .put('land',Land)
       .put('birds', Birds)
+      .put('score', Score)
       .put('startButton', StartButton);
     this.registerEvent();
     this.director.createPencil();
@@ -38,7 +48,6 @@ export class Main {
   }
   registerEvent() {
     wx.onTouchStart((e)=>{
-      console.log(e)
       if(this.director.isGameOver){
         this.init()
       }else{
